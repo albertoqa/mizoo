@@ -6,27 +6,64 @@
 
 '''
 
-import argparse, os, sys, glob, json, requests
+import argparse, os, sys, glob, json, requests, http, urllib
+
+uploads_api = "http://uploads.im/api"
+caption_api = "https://api.projectoxford.ai/vision/v1.0/describe?"
 
 def caption(url, key):
     '''
+    Return the caption for the imagen on the given url. A valid Microsoft API's
+    key must be given.
+    -----------------------------------------
+    url: the url of the image to analyze
+    key: a valid Microsoft API's key
 
+    return: caption for the image
     '''
-    return "a"
+
+    headers = {
+        'Ocp-Apim-Subscription-Key': key,
+        'Content-Type': 'application/json',
+    }
+
+    data = json.dumps({"Url": url}, separators=(',',':'))
+
+    # make request to the api and process the response
+    try:
+        conn = http.client.HTTPSConnection('api.projectoxford.ai')
+        conn.request("POST", "/vision/v1.0/describe?", data, headers)
+        response = conn.getresponse()
+        data = json.loads(response.read().decode())
+        return(data['description']['captions'][0]["text"])
+        conn.close()
+    except Exception as e:
+        print(e)
 
 def upload(img):
     '''
+    Stream the given image to uploads.im api.
+    -----------------------------------------
+    img: path of the image
 
+    returns: the url of the uploaded image
     '''
 
-    api_url = "http://uploads.im/api"
-    request = requests.post(api_url, files={'img': open(img, 'rb')})
+    # post the img to uploads.im
+    request = requests.post(uploads_api, files={'img': open(img, 'rb')})
     data = json.loads(request.text)["data"]
+
+    # return the url of the uploaded image
     return(data["img_url"])
 
 def rename(path, key):
     '''
+    Rename the photo-s in the given path using the Microsoft Computer Vision
+    API's to describe them.
+    -----------------------------------------
 
+    path: file/dir of the images to rename
+    key:  Microsoft's API key
     '''
 
     # check if valid path for a file/dir
@@ -44,8 +81,9 @@ def rename(path, key):
     else:
         tocaption = []
         for extension in extensions:
-            tocaption.extend(glob.glob("*" + extension))
+            tocaption.extend(glob.glob(path + "*" + extension))
 
+    print(tocaption)
     # for each file upload it to uploads.im and send it to caption
     for img in tocaption:
         # upload the img to uploads.im and get the url
@@ -56,14 +94,12 @@ def rename(path, key):
 
             # get file extension and rename file with the caption
             file_extension = os.path.splitext(img)[1]
-            os.rename(img, caption_text + file_extension)
+            prev_path = os.path.dirname(img)
+            os.rename(img, prev_path + "/" + caption_text + file_extension)
 
+    print('Success')
 
 if __name__ == '__main__':
-    '''
-
-    '''
-
     parser = argparse.ArgumentParser()
     parser.add_argument('path', help='path of the file or directory to use', action='store')
     parser.add_argument('key', help='Microsoft API\'s key', action='store')
