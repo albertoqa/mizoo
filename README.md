@@ -1,4 +1,6 @@
-<center>![](img/mizoo.png)</center>
+<p align="center">
+  <img src="img/mizoo.png" alt="mizoo logo" width="400">
+</p>
 
 <br>Mizoo rename all your photos with a description of what is in them. It uses Microsoft Computer Vision API's to describe what it sees on the image and rename the file to that description.
 
@@ -12,7 +14,7 @@ By naming your photos with a description of the content you will never have to d
 
 \>  `mizoo directory key`
 
-Use `mizzo -h` for help.
+Use `mizoo -h` for help.
 
 ## Caption samples
 
