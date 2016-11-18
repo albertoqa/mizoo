@@ -8,9 +8,11 @@ By naming your photos with a description of the content you will never have to d
 
 ## Install and usage
 
+\> `pip install mizoo`
 
+\>  `mizoo directory key`
 
-
+Use `mizzo -h` for help.
 
 ## Caption samples
 
@@ -19,3 +21,9 @@ By naming your photos with a description of the content you will never have to d
 
 ![sample 1](img/steve.png)
 <br>*Steve Jobs wearing glasses looking at the camera and he seems 😐*
+
+# TODO
+
+- what if two captions are the same?
+- change caption for tags?
+- ...

@@ -1,9 +1,18 @@
 #!/usr/bin/env python
 
 '''
+Mizoo rename all your photos with a description of what is in them.
+It uses Microsoft Computer Vision API's to describe what it sees on
+the image and rename the file to that description.
 
+By naming your photos with a description of the content you will
+never have to dig up an old photo from your library ever again, just
+search for the content!
 
+Warning: Machines are not very good at captioning yet so don't trust
+this to much...
 
+Usage: > mizoo directory key
 '''
 
 import argparse, os, sys, glob, json, requests, http, urllib
