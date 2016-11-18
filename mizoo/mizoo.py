@@ -6,20 +6,28 @@
 
 '''
 
-import argparse, os, sys, glob
+import argparse, os, sys, glob, json, requests
+
+def caption(url, key):
+    '''
+
+    '''
+    return "a"
+
+def upload(img):
+    '''
+
+    '''
+
+    api_url = "http://uploads.im/api"
+    request = requests.post(api_url, files={'img': open(img, 'rb')})
+    data = json.loads(request.text)["data"]
+    return(data["img_url"])
 
 def rename(path, key):
     '''
 
     '''
-
-
-
-    # file or dir?
-    # recursive dir search?
-    # detect images -> only png and jpg now
-    # once I have the list of images....
-    # for each one upload it to uploads.im
 
     # check if valid path for a file/dir
     if not os.path.exists(path):
@@ -27,17 +35,28 @@ def rename(path, key):
 
     extensions = (".jpg", ".png")
 
+    # check if file/dir is valid and list all the files to process
     if os.path.isfile(path):
         if path.lower().endswith(extensions):
-            r = [path]
+            tocaption = [path]
         else:
             sys.exit('file is not a valid image')
     else:
-        r = []
+        tocaption = []
         for extension in extensions:
-            r.extend(glob.glob("*" + extension))
+            tocaption.extend(glob.glob("*" + extension))
 
-    print(r)
+    # for each file upload it to uploads.im and send it to caption
+    for img in tocaption:
+        # upload the img to uploads.im and get the url
+        uploaded_url = upload(img)
+
+        if uploaded_url:
+            caption_text = caption(uploaded_url, key)
+
+            # get file extension and rename file with the caption
+            file_extension = os.path.splitext(img)[1]
+            os.rename(img, caption_text + file_extension)
 
 
 if __name__ == '__main__':
