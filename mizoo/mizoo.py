@@ -79,7 +79,7 @@ def rename(path, key):
     if not os.path.exists(path):
         sys.exit('file or directory not found')
 
-    extensions = (".jpg", ".png")
+    extensions = (".jpg", ".png", ".gif", ".bpm")
 
     # check if file/dir is valid and list all the files to process
     if os.path.isfile(path):
