@@ -33,9 +33,11 @@ def rename(path, key):
         else:
             sys.exit('file is not a valid image')
     else:
-        r = glob.glob(path+"/*.py")
-        print(r)
+        r = []
+        for extension in extensions:
+            r.extend(glob.glob("*" + extension))
 
+    print(r)
 
 
 if __name__ == '__main__':
