@@ -3,7 +3,7 @@ import sys, twine
 
 setup(
     name='mizoo',
-    version='0.1',
+    version='0.5',
 
     description='Use deep learning to rename your images with the related caption.',
     long_description='Use deep learning to rename your images with the related caption.',

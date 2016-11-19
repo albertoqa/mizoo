@@ -1,0 +1,13 @@
+LICENSE.txt
+MANIFEST.in
+README
+setup.cfg
+setup.py
+mizoo/__init__.py
+mizoo/mizoo.py
+mizoo.egg-info/PKG-INFO
+mizoo.egg-info/SOURCES.txt
+mizoo.egg-info/dependency_links.txt
+mizoo.egg-info/entry_points.txt
+mizoo.egg-info/requires.txt
+mizoo.egg-info/top_level.txt

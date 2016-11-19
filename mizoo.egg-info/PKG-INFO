@@ -1,0 +1,23 @@
+Metadata-Version: 1.1
+Name: mizoo
+Version: 0.5
+Summary: Use deep learning to rename your images with the related caption.
+Home-page: https://github.com/albertoqa/mizoo.git
+Author: Alberto Quesada
+Author-email: qa.alberto@gmail.com
+License: MIT
+Download-URL: https://github.com/albertoqa/mizoo.git/tarball/0.1
+Description: Use deep learning to rename your images with the related caption.
+Keywords: captioning,image,ai,deep learning
+Platform: UNKNOWN
+Classifier: Natural Language :: English
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: POSIX :: BSD
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
