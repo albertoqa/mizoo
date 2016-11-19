@@ -108,9 +108,20 @@ def rename(path, key):
 
     print('Success')
 
-if __name__ == '__main__':
+def main():
+    '''
+    Parse arguments and start the renaming.
+    -----------------------------------------
+
+    path: path of the file or directory to rename
+    key: Microsoft API's key
+    '''
+
     parser = argparse.ArgumentParser()
     parser.add_argument('path', help='path of the file or directory to use', action='store')
     parser.add_argument('key', help='Microsoft API\'s key', action='store')
     args = parser.parse_args()
     rename(args.path, args.key)
+
+if __name__ == '__main__':
+    main()
