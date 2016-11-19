@@ -1,13 +1,9 @@
 from setuptools import setup
 import sys, twine
 
-install_requires = [
-    "requests"
-]
-
 setup(
     name='mizoo',
-    version='0.4',
+    version='0.1',
 
     description='Use deep learning to rename your images with the related caption.',
     long_description='Use deep learning to rename your images with the related caption.',
@@ -41,5 +37,7 @@ setup(
         ],
     },
 
-    install_requires=install_requires,
+    install_requires=[
+        "requests"
+    ],
 )
