@@ -92,7 +92,8 @@ def rename(path, key):
         for extension in extensions:
             tocaption.extend(glob.glob(path + "*" + extension))
 
-    print(tocaption)
+    print('Processing...')
+    # print(tocaption)
     # for each file upload it to uploads.im and send it to caption
     for img in tocaption:
         # upload the img to uploads.im and get the url
